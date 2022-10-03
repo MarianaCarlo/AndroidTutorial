@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuAllActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="20dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Checkbox Activity"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/green"
+            android:onClick="sendCheckbox"
+            android:id="@+id/buttonCheckbox"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text=" Relative Layout Activity"
+            android:layout_below="@+id/buttonCheckbox"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/green"
+            android:onClick="sendRelative"
+            android:id="@+id/buttonRelative"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text=" Linear Layout Activity"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/buttonRelative"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/green"
+            android:onClick="sendLinear"
+            android:id="@+id/buttonLinear"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text=" Constraint Layout Activity"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/buttonLinear"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/green"
+            android:onClick="sendConstraint"
+            android:id="@+id/buttonContraint"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Images Activity"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/buttonContraint"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/green"
+            android:onClick="sendImages"
+            android:id="@+id/buttonImages"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="List View Activity"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/buttonImages"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/green"
+            android:onClick="sendListView"
+            android:id="@+id/buttonListView"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Different XML Activity"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/buttonListView"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/green"
+            android:onClick="sendDifferentXML"
+            android:id="@+id/buttonDifferentXML"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Material Design Activity"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/buttonDifferentXML"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/green"
+            android:onClick="sendMaterialDesign"
+            android:id="@+id/buttonMaterialDesign"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Recycler View Activity"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/buttonMaterialDesign"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/green"
+            android:onClick="sendRecyclerView"
+            android:id="@+id/buttonRecyclerView"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Connection SQLite"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/buttonRecyclerView"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/green"
+            android:onClick="sendConnectionSql"
+            android:id="@+id/buttonSQL"
+        />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="New SQLite tutorial"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/buttonSQL"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/green"
+            android:onClick="sendConnectionSQLite"
+            android:id="@+id/buttonSQLite"
+        />
+
+
+
+    </RelativeLayout>
+
+
+
+</ScrollView>

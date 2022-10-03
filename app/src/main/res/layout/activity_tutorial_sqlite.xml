@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TutorialSQLiteActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Enter your name"
+            android:textSize="24dp"
+            android:id="@+id/namePerson"
+            android:inputType="textPersonName"
+        />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Enter your age"
+            android:textSize="24dp"
+            android:layout_marginTop="10dp"
+            android:inputType="number"
+            android:layout_below="@+id/namePerson"
+            android:id="@+id/agePerson"
+        />
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:text="Active User"
+            android:textSize="24dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/agePerson"
+            android:id="@+id/switchActiveUser"
+        />
+
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/switchActiveUser"
+            android:layout_centerInParent="true"
+            android:id="@+id/buttons">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="VIEW ALL"
+                android:layout_marginHorizontal="20dp"
+                android:id="@+id/btnViewAll"
+
+            />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="ADD DATA"
+                android:layout_marginHorizontal="20dp"
+                android:layout_toRightOf="@+id/btnViewAll"
+                android:id="@+id/btnAdd"
+                />
+
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/listPersons"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/buttons"
+            android:layout_marginTop="21dp" />
+
+
+    </RelativeLayout>
+
+
+</ScrollView>
