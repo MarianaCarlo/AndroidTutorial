@@ -15,7 +15,7 @@ public class TutorialSQLiteActivity extends AppCompatActivity {
     //references to buttons and other controls on the layout
     Button buttonView, buttonAdd;
     EditText editName, editAge;
-    Switch SwitchActivePerson;
+    Switch switchActivePerson;
     ListView listPersons;
 
     @Override
@@ -27,14 +27,24 @@ public class TutorialSQLiteActivity extends AppCompatActivity {
         buttonAdd = findViewById(R.id.btnAdd);
         editName = findViewById(R.id.namePerson);
         editAge = findViewById(R.id.agePerson);
-        SwitchActivePerson = findViewById(R.id.switchActiveUser);
+        switchActivePerson = findViewById(R.id.switchActiveUser);
         listPersons = findViewById(R.id.listPersons);
 
         //button listeners for the add and view all buttons
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(TutorialSQLiteActivity.this, "Add button", Toast.LENGTH_SHORT).show();
+
+                try {
+                    PersonModel personModel = new PersonModel(-1, editName.getText().toString(), Integer.parseInt(editAge.getText().toString()), switchActivePerson.isChecked());
+                    Toast.makeText(TutorialSQLiteActivity.this, personModel.toString(), Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    Toast.makeText(TutorialSQLiteActivity.this, "Error creting person", Toast.LENGTH_SHORT).show();
+                }
+
+
+
+
             }
         });
 
