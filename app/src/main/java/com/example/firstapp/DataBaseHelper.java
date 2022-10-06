@@ -2,10 +2,14 @@ package com.example.firstapp;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
 
@@ -48,5 +52,40 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             return true;
         }
 
+    }
+
+    public List<PersonModel> getEveryone(){
+        List<PersonModel> returnList = new ArrayList<>();
+
+        //get data from the database
+        String queryString = "SELECT * FROM " + PERSONS_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //Cursor is the result set
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        //cursor.moveToFirst returns a true if there were items selected
+        if (cursor.moveToFirst()) {
+            //loop through the cursor (result set) and create new customer objects. Put then into the return list
+            do {
+                int personID = cursor.getInt(0);
+                String personName = cursor.getString(1);
+                int personAge = cursor.getInt(2);
+                boolean personActive = cursor.getInt(3) == 1 ? true: false; //ternary operation
+
+                PersonModel newPerson = new PersonModel(personID, personName, personAge, personActive);
+                returnList.add(newPerson);
+
+            } while (cursor.moveToNext()); //this should be move to the next
+
+        } else {
+            //failure, do not add anything to the list
+        }
+
+        //close both the cursor and the db when done.
+        cursor.close();
+        db.close();
+
+        return returnList;
     }
 }

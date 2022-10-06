@@ -10,6 +10,8 @@ import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class TutorialSQLiteActivity extends AppCompatActivity {
 
     //references to buttons and other controls on the layout
@@ -57,7 +59,9 @@ public class TutorialSQLiteActivity extends AppCompatActivity {
         buttonView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(TutorialSQLiteActivity.this, "View button", Toast.LENGTH_SHORT).show();
+                DataBaseHelper dataBaseHelper = new DataBaseHelper(TutorialSQLiteActivity.this);
+                List<PersonModel> everyone = dataBaseHelper.getEveryone();
+                Toast.makeText(TutorialSQLiteActivity.this, everyone.toString(), Toast.LENGTH_SHORT).show();
             }
         });
 
