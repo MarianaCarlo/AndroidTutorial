@@ -35,15 +35,21 @@ public class TutorialSQLiteActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                PersonModel personModel;
+
                 try {
-                    PersonModel personModel = new PersonModel(-1, editName.getText().toString(), Integer.parseInt(editAge.getText().toString()), switchActivePerson.isChecked());
+                    personModel = new PersonModel(-1, editName.getText().toString(), Integer.parseInt(editAge.getText().toString()), switchActivePerson.isChecked());
                     Toast.makeText(TutorialSQLiteActivity.this, personModel.toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     Toast.makeText(TutorialSQLiteActivity.this, "Error creting person", Toast.LENGTH_SHORT).show();
+                    personModel = new PersonModel(-1, "error", 0, false);
                 }
 
+                DataBaseHelper  dataBaseHelper = new DataBaseHelper(TutorialSQLiteActivity.this);
 
-
+                //ANADIENDO UN NUEVO PERSON
+                Boolean success = dataBaseHelper.addOne(personModel);
+                Toast.makeText(TutorialSQLiteActivity.this, "Success " + success, Toast.LENGTH_SHORT).show();
 
             }
         });
