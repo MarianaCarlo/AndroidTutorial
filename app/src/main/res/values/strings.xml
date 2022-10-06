@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">FirstApp</string>
     <string name="hello">Hola</string>
+    <string name="view_all">VIEW ALL</string>
 </resources>

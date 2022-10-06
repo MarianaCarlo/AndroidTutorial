@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -19,6 +20,8 @@ public class TutorialSQLiteActivity extends AppCompatActivity {
     EditText editName, editAge;
     Switch switchActivePerson;
     ListView listPersons;
+    ArrayAdapter personArrayAdapter;
+    DataBaseHelper dataBaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,10 @@ public class TutorialSQLiteActivity extends AppCompatActivity {
         editAge = findViewById(R.id.agePerson);
         switchActivePerson = findViewById(R.id.switchActiveUser);
         listPersons = findViewById(R.id.listPersons);
+
+        dataBaseHelper = new DataBaseHelper(TutorialSQLiteActivity.this);
+        ShowPersonsOnListView(dataBaseHelper);
+
 
         //button listeners for the add and view all buttons
         buttonAdd.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +60,8 @@ public class TutorialSQLiteActivity extends AppCompatActivity {
                 Boolean success = dataBaseHelper.addOne(personModel);
                 Toast.makeText(TutorialSQLiteActivity.this, "Success " + success, Toast.LENGTH_SHORT).show();
 
+
+                ShowPersonsOnListView(dataBaseHelper);
             }
         });
 
@@ -60,10 +69,17 @@ public class TutorialSQLiteActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DataBaseHelper dataBaseHelper = new DataBaseHelper(TutorialSQLiteActivity.this);
-                List<PersonModel> everyone = dataBaseHelper.getEveryone();
-                Toast.makeText(TutorialSQLiteActivity.this, everyone.toString(), Toast.LENGTH_SHORT).show();
+
+                ShowPersonsOnListView(dataBaseHelper);
+
+                //Toast.makeText(TutorialSQLiteActivity.this, everyone.toString(), Toast.LENGTH_SHORT).show();
             }
         });
 
+    }
+
+    private void ShowPersonsOnListView(DataBaseHelper dataBaseHelper2) {
+        personArrayAdapter = new ArrayAdapter<PersonModel>(TutorialSQLiteActivity.this, android.R.layout.simple_list_item_1, dataBaseHelper2.getEveryone());
+        listPersons.setAdapter(personArrayAdapter);
     }
 }
