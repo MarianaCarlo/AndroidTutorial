@@ -18,6 +18,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_PERSON_NAME = "PERSON_NAME";
     public static final String COLUMN_PERSON_AGE = "PERSON_AGE";
     public static final String COLUMN_ACTIVE_PERSON = "ACTIVE_PERSON";
+    public static final String COLUMN_ID = "ID";
 
     public DataBaseHelper(@Nullable Context context) {
         super(context, "persons.db", null, 1);
@@ -27,7 +28,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String createTableStatement = "CREATE TABLE " + PERSONS_TABLE + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_PERSON_NAME + " TEXT, " + COLUMN_PERSON_AGE + " INT, " + COLUMN_ACTIVE_PERSON + " BOOL) ";
+        String createTableStatement = "CREATE TABLE " + PERSONS_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_PERSON_NAME + " TEXT, " + COLUMN_PERSON_AGE + " INT, " + COLUMN_ACTIVE_PERSON + " BOOL) ";
         db.execSQL(createTableStatement);
     }
 
@@ -87,5 +88,20 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.close();
 
         return returnList;
+    }
+
+    public boolean deleteOne(PersonModel personModel) {
+        //finds personModel in the database, if it founds, delete and return true.
+        //if is not found, then return false
+        SQLiteDatabase db = this.getWritableDatabase();
+        String queryString = "DELETE FROM " + PERSONS_TABLE + " WHERE " + COLUMN_ID + " = " + personModel.getId();
+
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()){
+            return true;
+        } else {
+            return false;
+        }
     }
 }

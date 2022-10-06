@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -73,6 +74,17 @@ public class TutorialSQLiteActivity extends AppCompatActivity {
                 ShowPersonsOnListView(dataBaseHelper);
 
                 //Toast.makeText(TutorialSQLiteActivity.this, everyone.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //delete
+        listPersons.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                PersonModel clickedPerson = (PersonModel) parent.getItemAtPosition(position);
+                dataBaseHelper.deleteOne(clickedPerson);
+                ShowPersonsOnListView(dataBaseHelper);
+                Toast.makeText(TutorialSQLiteActivity.this, "Deleted " + clickedPerson.getName().toString(), Toast.LENGTH_SHORT).show();
             }
         });
 
